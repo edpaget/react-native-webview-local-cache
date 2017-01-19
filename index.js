@@ -11,7 +11,10 @@
  *
  * @providesModule WebViewLocalCache
  */
+
 'use strict';
+
+console.log("HERE");
 
 var React = require('react');
 var ReactNative = require('react-native');
@@ -44,6 +47,8 @@ var WebViewLocalCacheState = keyMirror({
 });
 
 var RCTWebViewLocalCache = requireNativeComponent('RCTWebViewLocalCache', WebViewLocalCache);
+
+console.log(RCTWebViewLocalCache.propTypes);
 
 /**
  * Renders a native WebView.
@@ -117,23 +122,23 @@ var WebViewLocalCache = React.createClass({
 
         var webView =
             <RCTWebViewLocalCache
-        ref={RCT_WEBVIEWBRIDGE_REF}
-        key="webViewKey"
-        javaScriptEnabled={true}
-        {...props}
-        source={resolveAssetSource(source)}
-        style={webViewStyles}
-        onLoadingStart={this.onLoadingStart}
-        onLoadingFinish={this.onLoadingFinish}
-        onLoadingError={this.onLoadingError}
-        onChange={this.onMessage}
+                ref={RCT_WEBVIEWBRIDGE_REF}
+                key="webViewKey"
+                javaScriptEnabled={true}
+                {...props}
+                source={resolveAssetSource(source)}
+                style={webViewStyles}
+                onLoadingStart={this.onLoadingStart}
+                onLoadingFinish={this.onLoadingFinish}
+                onLoadingError={this.onLoadingError}
+                onChange={this.onMessage}
             />;
 
         return (
                 <View style={styles.container}>
-                {webView}
-            {otherView}
-            </View>
+                    {webView}
+                    {otherView}
+                </View>
         );
     },
 
@@ -167,7 +172,7 @@ var WebViewLocalCache = React.createClass({
         );
     },
 
-    sendToBridge: function (message: string) {
+    sendToBridge: function (message) {
         UIManager.dispatchViewManagerCommand(
             this.getWebViewLocalCacheHandle(),
             UIManager.RCTWebViewLocalCache.Commands.sendToBridge,
@@ -229,4 +234,4 @@ var styles = StyleSheet.create({
     },
 });
 
-m
+module.exports = WebViewLocalCache;
