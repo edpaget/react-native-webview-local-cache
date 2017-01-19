@@ -15,6 +15,8 @@ import java.io.UnsupportedEncodingException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.net.URL;
+import java.net.MalformedURLException;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -105,10 +107,15 @@ public class RNWebViewLocalCacheManager extends SimpleViewManager<WebView> {
 
         @Override
         public WebResourceResponse shouldInterceptRequest(final WebView view, String url) {
-            Log.d("INTERCEPTED", url);
-            if ((interceptMap != null) && (interceptMap.hasKey(url))) {
-                return loadAsset(view, interceptMap.getMap(url));
-            } else {
+            try {
+                String urlPath = new URL(url).getPath();
+                if ((interceptMap != null) && (interceptMap.hasKey(urlPath))) {
+                    return loadAsset(view, interceptMap.getMap(urlPath));
+                } else {
+                    return super.shouldInterceptRequest(view, url);
+                }
+            }
+            catch(MalformedURLException e) {
                 return super.shouldInterceptRequest(view, url);
             }
         }

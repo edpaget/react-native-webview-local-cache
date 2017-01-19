@@ -14,8 +14,6 @@
 
 'use strict';
 
-console.log("HERE");
-
 var React = require('react');
 var ReactNative = require('react-native');
 var invariant = require('invariant');
@@ -48,7 +46,6 @@ var WebViewLocalCacheState = keyMirror({
 
 var RCTWebViewLocalCache = requireNativeComponent('RCTWebViewLocalCache', WebViewLocalCache);
 
-console.log(RCTWebViewLocalCache.propTypes);
 
 /**
  * Renders a native WebView.
@@ -119,6 +116,7 @@ var WebViewLocalCache = React.createClass({
         }
 
         let {source, ...props} = {...this.props};
+
 
         var webView =
             <RCTWebViewLocalCache
