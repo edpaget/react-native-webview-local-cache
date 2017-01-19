@@ -1,0 +1,19 @@
+
+{
+    "name": "react-native-web-view-local-cache",
+    "version": "0.0.1",
+    "description": "Allows the user to pass a map of urls to local assets to local instead.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "react-native"
+    ],
+    "author": "Edward Paget",
+    "license": "MIT",
+    "peerDependencies": {
+        "react-native": "^0.33.0",
+        "react-native-webview-bridge": "0.33.0"
+    }
+}
