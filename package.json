@@ -11,9 +11,6 @@
     ],
     "author": "Edward Paget",
     "license": "MIT",
-    "peerDependencies": {
-        "react-native": "^0.33.0"
-    },
     "dependencies": {
         "invariant": "2.2.0",
         "keymirror": "0.1.1"
